@@ -6,6 +6,7 @@
 #define MATRIX_MATRIX_H
 
 #include <iostream>
+#include "Invalid_Matrix_Dimesions.h"
 
 template<typename T>
 class Matrix {
@@ -37,20 +38,20 @@ public:
         return values[x + y * rows];
     }
 
-    Matrix<T> &getCol(int y) {
-        Matrix<T> *col = new Matrix(rows, 1);
+    Matrix<T> getCol(int y) {
+        Matrix<T> col(rows, 1);
         for (int i = 0; i < rows; ++i) {
-            col->setValue(i, 0, getValue(i, y));
+            col.setValue(i, 0, getValue(i, y));
         }
-        return *col;
+        return col;
     }
 
     Matrix<T> getRow(int x) {
-        Matrix<T> *row = new Matrix(1, cols);
+        Matrix<T> row(1, cols);
         for (int i = 0; i < cols; ++i) {
-            row->setValue(0, i, getValue(x, i));
+            row.setValue(0, i, getValue(x, i));
         }
-        return *row;
+        return row;
     }
 
     void setCol(int y, T *values);
@@ -59,7 +60,25 @@ public:
 
     T *getTrasposed();
 
-    Matrix<T> operator*(const Matrix<T> &);
+    Matrix<T> operator*(const Matrix<T> &m) {
+        if (cols == m.rows) {
+            Matrix<T> prod(rows, m.cols);
+            T tmp = 0;
+            for (int i = 0; i < rows; ++i) {
+                for (int j = 0; j < m.cols; ++j) {
+                    for (int k = 0; k < cols; ++k) {
+                        tmp += values[i + k * rows] * m.values[k + j * rows];
+                    }
+                    prod.values[i + j * rows] = tmp;
+                    tmp = 0;
+                }
+
+            }
+            return prod;
+        } else {
+            throw Invalid_Matrix_Dimensions("Rows and Cols doesn't match");
+        }
+    }
 
     Matrix<T> operator*(const int);
 
