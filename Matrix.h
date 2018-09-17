@@ -80,7 +80,15 @@ public:
         }
     }
 
-    Matrix<T> operator*(const int);
+    Matrix<T> operator*(const T num) {
+        Matrix<T> prod(rows, cols);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                prod.values[i + j * rows] = num * values[i + j * rows];
+            }
+        }
+        return prod;
+    }
 
     ~Matrix() {
         delete[] values;

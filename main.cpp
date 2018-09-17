@@ -13,13 +13,14 @@ int main() {
     s.setValue(1, 1, 6);
 
     m.printMatrix();
-    s.printMatrix();
-    try {
-        (m * s).printMatrix();
-    } catch (Invalid_Matrix_Dimensions &e) {
-        std::cout << e.what() << std::endl;
-    }
+    /* s.printMatrix();
+     try {
+         (m * s).printMatrix();
+     } catch (Invalid_Matrix_Dimensions &e) {
+         std::cout << e.what() << std::endl;
+     }*/
 
+    (m * 2).printMatrix();
 
 
     return 0;
