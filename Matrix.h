@@ -63,9 +63,35 @@ public:
         return row;
     }
 
-    void setCol(int y, T *values);
+    void setCol(int y, Matrix<T> &icol) {
+        if (icol.cols == 1 && y >= 0 && y < cols) {
+            if (rows == icol.rows) {
+                for (int i = 0; i < rows; ++i) {
+                    setValue(i, y, icol.getValue(i, 0));
+                }
 
-    void setRow(int x, T *values);
+            } else {
+                throw Invalid_Matrix_Dimensions("Not the same rows");
+            }
+        } else {
+            throw Invalid_Matrix_Dimensions("Input Matrix isn't a column Matrix or column index is invalid");
+        }
+    }
+
+    void setRow(int x, Matrix<T> &irow) {
+        if (irow.rows == 1 && x >= 0 && x < rows) {
+            if (cols == irow.cols) {
+                for (int i = 0; i < cols; ++i) {
+                    setValue(x, i, irow.getValue(0, i));
+                }
+
+            } else {
+                throw Invalid_Matrix_Dimensions("Not the same cols");
+            }
+        } else {
+            throw Invalid_Matrix_Dimensions("Input Matrix isn't a row Matrix or column index is invalid");
+        }
+    }
 
     T *getTrasposed();
 
