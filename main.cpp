@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Matrix.h"
 int main() {
-    Matrix<int> m(2, 2);
+    Matrix<int> m(3, 2);
     Matrix<int> s(2, 1);
     Matrix<int> j(1, 2);
 
@@ -9,16 +9,18 @@ int main() {
     m.setValue(0, 1, 5);
     m.setValue(1, 0, 4);
     m.setValue(1, 1, 6);
-    s.setValue(0, 0, 7);
+    m.setValue(2, 0, 7);
+    m.setValue(2, 1, 8);
+    /*s.setValue(0, 0, 7);
     s.setValue(1, 0, 8);
     j.setValue(0, 0, 9);
-    j.setValue(0, 1, 0);
+    j.setValue(0, 1, 0);*/
 
 
     m.printMatrix();
-    s.printMatrix();
+    //s.printMatrix();
 
-    (m * 3).printMatrix();
+    m.getTransposed().printMatrix();
 
     /*m.setCol(0, s);
     m.setRow(1, j);

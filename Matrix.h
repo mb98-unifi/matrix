@@ -93,7 +93,15 @@ public:
         }
     }
 
-    T *getTrasposed();
+    Matrix<T> getTransposed() {
+        Matrix<T> trasMatrix(cols, rows);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                trasMatrix.setValue(j, i, getValue(i, j));
+            }
+        }
+        return trasMatrix;
+    }
 
     Matrix<T> operator*(const Matrix<T> &m) {
         if (cols == m.rows) {
