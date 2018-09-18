@@ -18,9 +18,11 @@ int main() {
     m.printMatrix();
     s.printMatrix();
 
-    m.setCol(0, s);
+    (m * 3).printMatrix();
+
+    /*m.setCol(0, s);
     m.setRow(1, j);
-    m.printMatrix();
+    m.printMatrix();*/
 
     return 0;
 }

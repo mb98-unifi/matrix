@@ -115,14 +115,11 @@ public:
         }
     }
 
-    Matrix<T> operator*(const T num) {
-        Matrix<T> prod(rows, cols);
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < cols; ++j) {
-                prod.values[i + j * rows] = num * values[i + j * rows];
-            }
+    Matrix<T> &operator*(const T num) {
+        for (int i = 0; i < rows * cols; ++i) {
+            values[i] *= num;
         }
-        return prod;
+        return *this;
     }
 
     ~Matrix() {
