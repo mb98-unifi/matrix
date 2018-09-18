@@ -93,14 +93,24 @@ public:
         }
     }
 
+    void setColumn(int y, T *vals) {
+        for (int i = 0; i < rows; ++i)
+            setValue(i, y, vals[i]);
+    }
+
+    void setRow(int x, T *vals) {
+        for (int i = 0; i < cols; ++i)
+            setValue(x, i, vals[i]);
+    }
+
     Matrix<T> getTransposed() {
-        Matrix<T> trasMatrix(cols, rows);
+        Matrix<T> transMatrix(cols, rows);
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j) {
-                trasMatrix.setValue(j, i, getValue(i, j));
+                transMatrix.setValue(j, i, getValue(i, j));
             }
         }
-        return trasMatrix;
+        return transMatrix;
     }
 
     Matrix<T> operator*(const Matrix<T> &m) {
