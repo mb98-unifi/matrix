@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "Invalid_Matrix_Dimesions.h"
+#include <stdexcept>
 
 template<typename T>
 class Matrix {
@@ -31,11 +32,19 @@ public:
     }
 
     void setValue(int x, int y, T value) {
-        values[x + y * rows] = value;
+        if (x >= 0 && x < rows && y >= 0 && y < cols) {
+            values[x + y * rows] = value;
+        } else {
+            throw std::out_of_range("Out of range");
+        }
     }
 
     T getValue(int x, int y) {
-        return values[x + y * rows];
+        if (x >= 0 && x < rows && y >= 0 && y < cols) {
+            return values[x + y * rows];
+        } else {
+            throw std::out_of_range("Out of range");
+        }
     }
 
     Matrix<T> getCol(int y) {
