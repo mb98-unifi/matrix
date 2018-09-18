@@ -1,9 +1,11 @@
 #include <iostream>
 #include "Matrix.h"
+#include "MatrixFactory.h"
 int main() {
-    Matrix<int> m(3, 3);
-    Matrix<int> s(2, 1);
-    Matrix<int> j(1, 2);
+    MatrixFactory<int> factory;
+    Matrix<int> m = factory.createMatrix("", 3, 3);
+
+
 
     m.setRow(0, new int[3]{1, 2, 3});
     m.setRow(1, new int[3]{4, 5, 6});
