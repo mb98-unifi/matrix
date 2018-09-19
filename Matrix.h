@@ -93,7 +93,7 @@ public:
         }
     }
 
-    void setColumn(int y, T *vals) {
+    void setCol(int y, T *vals) {
         for (int i = 0; i < rows; ++i)
             setValue(i, y, vals[i]);
     }

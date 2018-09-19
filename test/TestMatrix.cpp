@@ -5,13 +5,16 @@
 #include <gtest/gtest.h>
 #include "../Matrix.h"
 
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
-
 TEST(Matrix, Constructor) {
     Matrix<int> m(3, 3);
     ASSERT_EQ(0, m.getValue(0, 0));
     ASSERT_EQ(0, m.getValue(2, 2));
 }
+
+TEST(Matrix, setValue) {
+    Matrix<int> m(2, 2);
+    m.setValue(1, 0, 5);
+    ASSERT_EQ(5, m.getValue(1, 0));
+}
+
+
