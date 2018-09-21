@@ -140,6 +140,18 @@ public:
         return *this;
     }
 
+    bool operator==(const Matrix<T> &m) {
+        if (rows == m.rows && cols == m.cols) {
+            for (int i = 0; i < rows * cols; ++i) {
+                if (values[i] != m.values[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     ~Matrix() {
         delete[] values;
     }
