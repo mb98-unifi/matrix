@@ -12,9 +12,13 @@ int main() {
     s.setRow(1, new int[3]{4, 5, 6});
     s.setRow(2, new int[3]{7, 8, 9});
 
+
     if (m == s) {
         std::cout << "ok";
     }
 
+    Matrix<int> c(3, 1);
+    c = m.getCol(0);
+    c.printMatrix();
     return 0;
 }

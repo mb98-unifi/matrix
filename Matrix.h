@@ -152,6 +152,17 @@ public:
         return false;
     }
 
+    Matrix<T> &operator=(const Matrix<T> &m) {
+        if (rows == m.rows && cols == m.cols) {
+            for (int i = 0; i < rows * cols; ++i) {
+                values[i] = m.values[i];
+            }
+        } else {
+            throw Invalid_Matrix_Dimensions("Rows and Cols doesn't match");
+        }
+        return *this;
+    }
+
     ~Matrix() {
         delete[] values;
     }
