@@ -15,10 +15,8 @@ public:
 
     Matrix(int r, int c) : rows(r), cols(c) {
         values = new T[rows * cols];
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < cols; ++j) {
-                values[i + j * rows] = 0;
-            }
+        for (int i = 0; i < rows * cols; ++i) {
+            values[i] = 0;
         }
     }
 
