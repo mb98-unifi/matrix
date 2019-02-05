@@ -111,6 +111,25 @@ public:
         return transMatrix;
     }
 
+    Matrix<T> operator+(const Matrix<T> &m) {
+        if (rows == m.rows && cols == m.cols) {
+            Matrix<T> sum(rows, cols);
+            for (int i = 0; i < rows * cols; ++i) {
+                sum.values[i] = values[i] + m.values[i];
+            }
+            return sum;
+        } else {
+            throw Invalid_Matrix_Dimensions("Rows and Cols doesn't match");
+        }
+    }
+
+    Matrix<T> &operator+(const T num) {
+        for (int i = 0; i < rows * cols; ++i) {
+            values[i] += num;
+        }
+        return *this;
+    }
+
     Matrix<T> operator*(const Matrix<T> &m) {
         if (cols == m.rows) {
             Matrix<T> prod(rows, m.cols);
@@ -151,12 +170,14 @@ public:
     }
 
     Matrix<T> &operator=(const Matrix<T> &m) {
-        if (rows == m.rows && cols == m.cols) {
-            for (int i = 0; i < rows * cols; ++i) {
-                values[i] = m.values[i];
+        if (this != &m) {
+            if (rows == m.rows && cols == m.cols) {
+                for (int i = 0; i < rows * cols; ++i) {
+                    values[i] = m.values[i];
+                }
+            } else {
+                throw Invalid_Matrix_Dimensions("Rows and Cols doesn't match");
             }
-        } else {
-            throw Invalid_Matrix_Dimensions("Rows and Cols doesn't match");
         }
         return *this;
     }

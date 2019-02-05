@@ -84,6 +84,38 @@ TEST_F(TestMatrixSuite, getTransposed) {
     ASSERT_TRUE(condition);
 }
 
+TEST_F(TestMatrixSuite, sum_Matrix) {
+    Matrix<int> c(3, 3);
+    Matrix<int> sum(3, 3);
+    Matrix<int> s(3, 3);
+    c.setRow(0, new int[3]{1, 5, 7});
+    c.setRow(1, new int[3]{2, 2, 8});
+    c.setRow(2, new int[3]{3, 7, 9});
+    s.setRow(0, new int[3]{2, 7, 10});
+    s.setRow(1, new int[3]{6, 7, 14});
+    s.setRow(2, new int[3]{10, 15, 18});
+    sum = m + c;
+    bool condition = false;
+    if (sum == s) {
+        condition = true;
+    }
+    ASSERT_TRUE(condition);
+}
+
+TEST_F(TestMatrixSuite, sum_Scalar) {
+    Matrix<int> sum(3, 3);
+    Matrix<int> s(3, 3);
+    s.setRow(0, new int[3]{4, 5, 6});
+    s.setRow(1, new int[3]{7, 8, 9});
+    s.setRow(2, new int[3]{10, 11, 12});
+    sum = m + 3;
+    bool condition = false;
+    if (sum == s) {
+        condition = true;
+    }
+    ASSERT_TRUE(condition);
+}
+
 TEST_F(TestMatrixSuite, product_Matrix) {
     Matrix<int> c(3, 3);
     Matrix<int> prod(3, 3);
@@ -151,3 +183,5 @@ TEST_F(TestMatrixSuite, copyOperator) {
     }
     ASSERT_TRUE(condition);
 }
+
+//TODO test eccezioni
