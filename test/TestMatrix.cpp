@@ -17,4 +17,10 @@ TEST(Matrix, setValue) {
     ASSERT_EQ(5, m.getValue(1, 0));
 }
 
+TEST(Matrix, setValue_Exception) {
+    Matrix<int> m(2, 2);
+    ASSERT_THROW(m.setValue(10, 0, 5), std::out_of_range);
+}
+
+
 

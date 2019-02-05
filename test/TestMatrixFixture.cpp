@@ -184,4 +184,32 @@ TEST_F(TestMatrixSuite, copyOperator) {
     ASSERT_TRUE(condition);
 }
 
-//TODO test eccezioni
+
+TEST_F(TestMatrixSuite, setCol_Matrix_Exception) {
+    Matrix<int> c(3, 2);
+    ASSERT_THROW(m.setCol(1, c), Invalid_Matrix_Dimensions);
+
+}
+
+TEST_F(TestMatrixSuite, setRow_Matrix_Exception) {
+    Matrix<int> c(2, 3);
+    ASSERT_THROW(m.setRow(1, c), Invalid_Matrix_Dimensions);
+
+}
+
+TEST_F(TestMatrixSuite, sum_Matrix_Exception) {
+    Matrix<int> c(3, 2);
+    ASSERT_THROW(m + c, Invalid_Matrix_Dimensions);
+}
+
+TEST_F(TestMatrixSuite, prod_Matrix_Exception) {
+    Matrix<int> c(2, 3);
+    ASSERT_THROW(m * c, Invalid_Matrix_Dimensions);
+}
+
+TEST_F(TestMatrixSuite, copyOperator_Exception) {
+    Matrix<int> c(3, 2);
+    ASSERT_THROW(m = c, Invalid_Matrix_Dimensions);
+}
+
+
