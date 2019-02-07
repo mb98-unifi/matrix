@@ -20,13 +20,12 @@ public:
         }
     }
 
-    void printMatrix() {
-        for (int i = 0; i < rows; ++i) {
-            std::cout << std::endl;
-            for (int j = 0; j < cols; ++j) {
-                std::cout << values[i + j * rows] << " ";
-            }
+    T *toArray() {
+        T *ret = new T[rows * cols];
+        for (int i = 0; i < rows * cols; ++i) {
+            ret[i] = values[i];
         }
+        return ret;
     }
 
     void setValue(int x, int y, T value) {
