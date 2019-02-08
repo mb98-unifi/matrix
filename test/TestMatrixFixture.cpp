@@ -20,11 +20,8 @@ protected:
     Matrix<int> m;
 };
 
-TEST_F(TestMatrixSuite, toArray) {
-    int *a = m.toArray();
-    ASSERT_EQ(1, a[0]);
-    ASSERT_EQ(4, a[1]);
-    ASSERT_EQ(7, a[2]);
+TEST_F(TestMatrixSuite, toString) {
+    ASSERT_EQ(" 123 456 789", m.toString());
 }
 
 TEST_F(TestMatrixSuite, getCol) {

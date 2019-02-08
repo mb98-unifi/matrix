@@ -20,10 +20,13 @@ public:
         }
     }
 
-    T *toArray() {
-        T *ret = new T[rows * cols];
-        for (int i = 0; i < rows * cols; ++i) {
-            ret[i] = values[i];
+    std::string toString() {
+        std::string ret;
+        for (int i = 0; i < rows; ++i) {
+            ret += " ";
+            for (int j = 0; j < cols; ++j) {
+                ret += std::to_string(values[i + j * rows]);
+            }
         }
         return ret;
     }
